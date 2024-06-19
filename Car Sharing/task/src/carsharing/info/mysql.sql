@@ -1,0 +1,21 @@
+CREATE TABLE `COMPANY`
+(
+    `ID`   integer PRIMARY KEY AUTO_INCREMENT,
+    `NAME` varchar(255) UNIQUE NOT NULL
+);
+
+CREATE TABLE `CAR`
+(
+    `ID`         integer PRIMARY KEY AUTO_INCREMENT,
+    `NAME`       varchar(255) UNIQUE NOT NULL,
+    `COMPANY_ID` integer             NOT NULL,
+    FOREIGN KEY (`COMPANY_ID`) REFERENCES `COMPANY` (`ID`)
+);
+
+CREATE TABLE `CUSTOMER`
+(
+    `ID`            integer PRIMARY KEY AUTO_INCREMENT,
+    `NAME`          varchar(255) UNIQUE NOT NULL,
+    `RENTED_CAR_ID` integer DEFAULT null,
+    FOREIGN KEY (`RENTED_CAR_ID`) REFERENCES `CAR` (`ID`)
+);
